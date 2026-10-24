@@ -1,25 +1,82 @@
 aid: ampersand-ai
+
 name: Ampersand
-description: 'Ampersand is a company surfaced via the API Evangelist harvest backlog (source: vc-portfolio;
-  backed by a16z) and added to the network as a stub for full-pipeline profiling.'
+
+image: https://www.ampersand.ai/og/home.png
+
+description: 'Ampersand provides integration infrastructure for enterprise products, enabling engineering, solution, and revenue teams to connect and synchronize data across platforms such as Salesforce, NetSuite, HubSpot, Marketo, Zendesk, and Intercom. Their platform offers pre‑built integrations, a developer portal, comprehensive documentation, pricing details, and resources like case studies and a changelog. Ampersand aims to simplify complex integrations, accelerate time‑to‑value, and support scalable enterprise workflows.'
+
 url: https://raw.githubusercontent.com/api-evangelist/ampersand-ai/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:vc-portfolio
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-24 (modular-v1; was harvest)
+
 specificationVersion: '0.20'
+
 created: '2026-10-24'
+
 modified: '2026-10-24'
+
 tags:
 - Company
-apis: []
+- Integration
+- Enterprise
+- API
+- Automation
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
-x-backed-by:
-- a16z
+
 common:
+- type: Webhooks
+  url: asyncapi/ampersand-ai-webhooks.yml
+- type: CLI
+  url: cli/ampersand-ai-cli.yml
+- type: Sandbox
+  url: sandbox/ampersand-ai-sandbox.yml
+- type: Authentication
+  url: authentication/ampersand-ai-authentication.yml
+- type: LLMsTxt
+  url: llms/ampersand-ai-llms.txt
+- type: AgentCard
+  url: a2a/ampersand-ai-a2a.yml
+- type: SecurityTxt
+  url: well-known/ampersand-ai-help-security.txt
+- type: WellKnown
+  url: well-known/ampersand-ai-well-known.yml
+- type: Hosts
+  url: hosts/ampersand-ai-hosts.yml
+- type: Vendors
+  url: vendors/ampersand-ai-vendors.yml
+- type: DomainSecurity
+  url: security/ampersand-ai-domain-security.yml
 - type: Website
   url: https://www.ampersand.ai/
+- type: DeveloperPortal
+  url: https://www.ampersand.ai/
+- type: Documentation
+  url: https://docs.ampersand.ai/overview
+- type: Pricing
+  url: https://www.ampersand.ai/pricing
+- type: Blog
+  url: https://www.ampersand.ai/blog
+- type: About
+  url: https://www.ampersand.ai/about
+
+apis: []
+
+x-backed-by:
+- a16z
+x-enrichment:
+  date: '2026-10-24'
+  status: enriched
+  artifacts_added: 24
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

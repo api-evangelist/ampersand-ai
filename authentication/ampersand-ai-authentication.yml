@@ -1,0 +1,24 @@
+generated: '2026-10-24'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://docs.ampersand.ai/api/key-auth.md
+sources:
+- https://docs.ampersand.ai/api/key-auth.md
+- https://docs.ampersand.ai/reference/oauth/generate-oauth-authorization-url.md
+- https://docs.ampersand.ai/reference/oauth/generate-oauth-authorization-url-for-existing-connection.md
+- https://docs.ampersand.ai/reference/oauth/generate-oauth-authorization-url
+description: Authentication methods for Ampersand API
+schemes:
+- type: apiKey
+  name: X-Api-Key
+  evidence: 'All API endpoints require authenticated access via an API key passed as a header `X-Api-Key`: your Ampersand API key.'
+  location: header
+  header: X-Api-Key
+  how_to_obtain: Create API keys from the API Keys page in the Ampersand Dashboard.
+- type: http-bearer
+  name: Bearer
+  evidence: "security:\n  - APIKeyHeader: []\n  - Bearer: []"
+  location: header
+  header: Authorization
+  how_to_obtain: Obtain a JWT token as described in the Ampersand JWT authentication documentation.
+docs: https://docs.ampersand.ai/api/key-auth.md

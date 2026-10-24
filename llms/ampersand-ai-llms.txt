@@ -1,0 +1,366 @@
+# Ampersand
+
+- [Integration infrastructure for enterprise products](https://docs.ampersand.ai/overview.md): Ampersand lets your enterprise product read, write, search, and subscribe to events in customers' SaaS, with per-customer field mappings and a managed runtime.
+- [Quickstart](https://docs.ampersand.ai/starter-project.md): Clone a working React app with sample Ampersand integrations already wired up.
+- [Use with Claude Code](https://docs.ampersand.ai/use-with-ai-ide.md)
+- [Concepts](https://docs.ampersand.ai/concepts.md): Understand how Ampersand integrations, installations, revisions, connections, and configs fit together, and how a customer's config overrides a revision.
+- [Read actions](https://docs.ampersand.ai/read-actions.md)
+- [Write actions](https://docs.ampersand.ai/write-actions.md)
+- [Subscribe actions](https://docs.ampersand.ai/subscribe-actions.md)
+- [Search actions](https://docs.ampersand.ai/search-actions.md)
+- [Proxy actions](https://docs.ampersand.ai/proxy-actions.md)
+- [Object and field mapping](https://docs.ampersand.ai/object-and-field-mapping.md)
+- [Manage customer schemas](https://docs.ampersand.ai/manage-customer-schemas.md): Fetch fields from your customer's SaaS, create or update custom fields in Salesforce and HubSpot, and monitor schema changes with watchSchema.
+- [Prebuilt UI components](https://docs.ampersand.ai/embeddable-ui-components.md): Install @amp-labs/react, set up AmpersandProvider with an API key or JWT, embed the install integration and connect provider components, and style them.
+- [Headless UI library](https://docs.ampersand.ai/headless.md): Use Headless UI library hooks from @amp-labs/react to manage connections, installations, field metadata, and local read and write config in a custom UI.
+- [Route synced data and notifications to destinations](https://docs.ampersand.ai/destinations/overview.md): Learn which destinations Ampersand supports, how to add one in the Dashboard, and how to route Read Action, Subscribe Action, and notification data to it.
+- [Webhook destinations](https://docs.ampersand.ai/destinations/webhooks.md): Receive read and subscribe action results at your webhook endpoint, handle inline or URL payloads and size limits, and verify Svix signatures.
+- [Slack destinations](https://docs.ampersand.ai/destinations/slack.md): Set up a Slack destination with an incoming webhook URL to post notifications and small read or subscribe payloads, and understand message truncation.
+- [Amazon S3 destinations](https://docs.ampersand.ai/destinations/s3.md): Write Read and Subscribe Action payloads as JSON objects to an Amazon S3 bucket, with IAM setup, object key templates, storage class, and troubleshooting.
+- [BigQuery destinations](https://docs.ampersand.ai/destinations/bigquery.md): Insert Read and Subscribe Action data into a Google BigQuery table with id and payload columns, using a service account key and optional batch settings.
+- [ClickHouse destinations](https://docs.ampersand.ai/destinations/clickhouse.md): Insert synced data into a ClickHouse table over HTTPS, matching payload keys to column names, and configure the URL, credentials, database, and batch size.
+- [Amazon Redshift destinations](https://docs.ampersand.ai/destinations/redshift.md): Insert synced data into an Amazon Redshift Serverless table via the Redshift Data API, using created_at and payload columns, AWS credentials, and batching.
+- [Snowflake destinations](https://docs.ampersand.ai/destinations/snowflake.md): Send read and subscribe data into a Snowflake table with key-pair authentication, create the id, created_at, and payload columns, and set batching.
+- [Azure Service Bus destinations](https://docs.ampersand.ai/destinations/azureservicebus.md): Publish Read and Subscribe Action payloads as JSON messages to an Azure Service Bus queue or topic using a connection string with Send permission.
+- [Kinesis destinations](https://docs.ampersand.ai/destinations/kinesis.md): Send Read and Subscribe Action messages to an AWS Kinesis stream: create the stream and IAM credentials, set partition keys, and review the message format.
+- [Google Cloud Pub/Sub destinations](https://docs.ampersand.ai/destinations/pubsub.md): Publish Read and Subscribe Action payloads as JSON to a Google Cloud Pub/Sub topic using a project ID, topic ID, and a Pub/Sub Publisher service account.
+- [RabbitMQ destinations](https://docs.ampersand.ai/destinations/rabbitmq.md): Publish synced data as JSON messages to an existing RabbitMQ exchange, setting the server URL, optional TLS, and publish credentials in the Dashboard.
+- [Amazon SQS destinations](https://docs.ampersand.ai/destinations/sqs.md): Publish read and subscribe action data as JSON messages to an Amazon SQS queue using a queue URL and AWS credentials with sqs:SendMessage permission.
+- [Overview](https://docs.ampersand.ai/notifications/overview.md)
+- [Notification payloads](https://docs.ampersand.ai/notifications/notification-payloads.md): See example notification payloads for webhook, Kinesis, and Amazon S3 destinations, covering installation, read, write, subscribe, and connection events.
+- [Manifest schema reference](https://docs.ampersand.ai/manifest-reference.md): Field-by-field reference for the amp.yaml manifest schema: integration, read, write, proxy, and subscribe definitions, plus schedule and backfill options.
+- [Config schema reference](https://docs.ampersand.ai/config-reference.md): Field-by-field reference for the installation config: read, write, subscribe, and proxy settings for each customer, how they map to amp.yaml, and how to create and update them.
+- [Install and use the Ampersand CLI](https://docs.ampersand.ai/cli/overview.md): Install the Ampersand CLI on macOS, Windows, or other systems, log in, deploy integrations from amp.yaml, and run it in CI/CD with an API key.
+- [CLI command reference](https://docs.ampersand.ai/cli/reference.md): Syntax, flags, and examples for every Ampersand CLI command, from login and deploy to delete:integration, delete:installation, and the list commands.
+- [Outgoing IP addresses](https://docs.ampersand.ai/security/outgoing-ip-addresses.md): Add the fixed Ampersand outgoing IP addresses to a provider allowlist so read, write, proxy, and subscribe action requests to SaaS APIs are not blocked.
+- [Dev and prod environments](https://docs.ampersand.ai/dev-and-prod-environments.md): Set up separate dev and prod projects, deploy one amp.yaml to each with the amp CLI, reuse destination names, and automate it with the Github Action.
+- [Terminology](https://docs.ampersand.ai/terminology.md)
+- [Build your own unified API](https://docs.ampersand.ai/unified-api.md)
+- [Ampersand REST APIs: Write, Read, Platform, and Proxy](https://docs.ampersand.ai/api/overview.md): Learn when to use Ampersand's four REST APIs (Write, Read, Platform, and Proxy) instead of your amp.yaml manifest, and try them in the Postman Collection.
+- [Access via API key](https://docs.ampersand.ai/api/key-auth.md): Authenticate Ampersand API requests with the X-Api-Key header, and create, name, and view API keys from the API Keys page in the Ampersand Dashboard.
+- [Access via JWT](https://docs.ampersand.ai/api/jwt-auth.md): Generate an RSA key pair, register the public key with Ampersand, sign JWTs on your server, and fetch them in your frontend to authenticate API requests.
+- [Write records](https://docs.ampersand.ai/reference/write/write-records.md): Create, update, or delete records in a SaaS instance. Create and update support synchronous or asynchronous mode; delete is synchronous only. See [Write actions](https://docs.ampersand.ai/write-actions) for details.
+- [Trigger a read](https://docs.ampersand.ai/reference/read/trigger-a-read.md): Triggers reading data from a SaaS instance. See [Trigger a read](https://docs.ampersand.ai/read-actions#trigger-a-read) for details. If you want scheduled reads or automatic backfills instead, you [can define them in the manifest](https://docs.ampersand.ai/read-actions#defining-reads).
+- [Pause reads for an installation](https://docs.ampersand.ai/reference/read/pause-reads-for-an-installation.md): Pauses all scheduled reads for an installation. If reads are already paused, this will be a no-op. Accepts specific objects to pause reads for in the request body.
+- [Unpause reads for an installation](https://docs.ampersand.ai/reference/read/unpause-reads-for-an-installation.md): Unpauses all scheduled reads for an installation. If no reads were paused, this will be a no-op. Accepts specific objects to unpause reads for in the request body.
+- [Deliver results](https://docs.ampersand.ai/reference/read/deliver-results.md): This endpoint is deprecated. If you wish you trigger a read (including backfills), use the [trigger a read](https://docs.ampersand.ai/reference/read/trigger-a-read) endpoint instead.
+- [Search records](https://docs.ampersand.ai/reference/search/search-records.md): Search records in a SaaS instance.
+- [Generate OAuth authorization URL](https://docs.ampersand.ai/reference/oauth/generate-oauth-authorization-url.md): Generate a URL for the browser to render to kick off OAuth flow. You can use this endpoint as an alternative to the [prebuilt UI components](https://docs.ampersand.ai/embeddable-ui-components).
+- [Generate OAuth authorization URL for existing connection](https://docs.ampersand.ai/reference/oauth/generate-oauth-authorization-url-for-existing-connection.md): Generate a URL for the browser to render to kick off an OAuth flow that updates an existing connection. Use this when the connection's credentials need to be refreshed. To start an OAuth flow without specifying a connection ID, use the [/oauth-connect endpoint](https://docs.ampersand.ai/reference/oa…
+- [Start or continue a multi-step custom auth flow](https://docs.ampersand.ai/reference/connection/start-or-continue-a-multi-step-custom-auth-flow.md): Drives a multi-step custom auth flow (browser redirects and/or server-side credential-exchange calls). Call it once with the flow inputs to start; if the response contains a redirect, open it, then call again with the returned sessionId and the provider's callback params to continue. Repeat until th…
+- [List connections](https://docs.ampersand.ai/reference/connection/list-connections.md)
+- [Generate a new connection](https://docs.ampersand.ai/reference/connection/generate-a-new-connection.md): All auth schemes are supported, but for OAuth2 Authorization Code, it is recommended that you use the [/oauth-connect endpoint](https://docs.ampersand.ai/reference/oauth/generate-oauth-authorization-url) instead, unless you already have the refresh token and are importing it into Ampersand.
+- [Get a connection](https://docs.ampersand.ai/reference/connection/get-a-connection.md)
+- [Delete a connection](https://docs.ampersand.ai/reference/connection/delete-a-connection.md)
+- [Update a connection.](https://docs.ampersand.ai/reference/connection/update-a-connection.md): Rotate credentials or update metadata (such as the provider workspace reference) for an existing connection.
+- [List projects](https://docs.ampersand.ai/reference/project/list-projects.md): Lists projects your credentials can access.
+- [Create a new project](https://docs.ampersand.ai/reference/project/create-a-new-project.md): Creates a new project within an organization. A project is a container for provider apps, integrations, and connections.
+- [Get a project](https://docs.ampersand.ai/reference/project/get-a-project.md): Get a project by its ID or name.
+- [Update a project](https://docs.ampersand.ai/reference/project/update-a-project.md): Update a project's mutable fields using field masks. Currently, the updatable fields are `appName` (the display name shown to end users) and `name` (the unique project identifier).
+- [List provider apps](https://docs.ampersand.ai/reference/provider-app/list-provider-apps.md)
+- [Create a new provider app](https://docs.ampersand.ai/reference/provider-app/create-a-new-provider-app.md)
+- [Delete a provider app.](https://docs.ampersand.ai/reference/provider-app/delete-a-provider-app.md)
+- [Update a provider app](https://docs.ampersand.ai/reference/provider-app/update-a-provider-app.md)
+- [List integrations](https://docs.ampersand.ai/reference/integration/list-integrations.md)
+- [Create a new integration.](https://docs.ampersand.ai/reference/integration/create-a-new-integration.md)
+- [Get an integration by ID or name](https://docs.ampersand.ai/reference/integration/get-an-integration-by-id-or-name.md)
+- [Delete an integration](https://docs.ampersand.ai/reference/integration/delete-an-integration.md): Delete an integration and all its installations.
+- [Batch upsert a group of integrations](https://docs.ampersand.ai/reference/integration/batch-upsert-a-group-of-integrations.md): This endpoint is used by the Ampersand CLI to batch upsert integrations. We recommend using the [CLI's deploy command](https://docs.ampersand.ai/cli/overview#deploy-integrations) rather than this API endpoint directly.
+- [Create a new revision.](https://docs.ampersand.ai/reference/revision/create-a-new-revision.md): We recommend using the [CLI's deploy command](https://docs.ampersand.ai/cli/overview#deploy-integrations) rather than this API endpoint directly, unless you have an advanced use case.
+- [Get a hydrated revision](https://docs.ampersand.ai/reference/revision/get-a-hydrated-revision.md): Returns the integration revision enriched with live field metadata from the consumer's connected SaaS instance, such as available fields, display names, and type for each object defined in the integration.
+- [List installations for an integration](https://docs.ampersand.ai/reference/installation/list-installations-for-an-integration.md): Lists all installations for a specific integration within a project. To list installations across all integrations, use listInstallationsForProject instead.
+- [Create a new installation](https://docs.ampersand.ai/reference/installation/create-a-new-installation.md): Install an integration for a specific group. The group must already have a SaaS connection — either provide its `connectionId`, or omit it to use the group's default. To create a connection, use the [OAuth Connect endpoint](https://docs.ampersand.ai/reference/oauth/generate-oauth-authorization-url)…
+- [Get an installation](https://docs.ampersand.ai/reference/installation/get-an-installation.md): Retrieves a single installation by ID, including its connection details, config, and health status.
+- [Delete an installation](https://docs.ampersand.ai/reference/installation/delete-an-installation.md): Delete an Installation. This will also delete the associated Connection if it is not used by any other Installations.
+- [Update an installation](https://docs.ampersand.ai/reference/installation/update-an-installation.md): Update an installation using field masks. Note: subscribe config changes trigger a subscription change in the provider's system, which typically takes 1-2 minutes but may take up to 10 minutes.
+- [Update an installation object](https://docs.ampersand.ai/reference/installation/update-an-installation-object.md): Updates a single object's configuration within an installation using JSON Patch syntax.
+- [List installations for a project](https://docs.ampersand.ai/reference/installation/list-installations-for-a-project.md): Lists all installations across every integration in a project, giving you a complete view of all active customer integrations. To narrow results to a single integration, use listInstallations instead.
+- [Get object metadata via installation](https://docs.ampersand.ai/reference/objects-&-fields/get-object-metadata-via-installation.md): Retrieves metadata about an object in a customer's SaaS instance, including its fields. An installation must exist for the given `groupRef` and `integrationId`. The `objectName` can be either the mapped name from your integration config or the native provider name. For Salesforce, nested fields may…
+- [Get object metadata via connection](https://docs.ampersand.ai/reference/objects-&-fields/get-object-metadata-via-connection.md): Retrieves metadata about an object in a customer's SaaS instance, including its fields. A connection must exist for the given `groupRef` and `provider`. For Salesforce, nested fields may be included using JSONPath bracket notation (e.g. `$['billingaddress']['city']`).
+- [Upsert custom fields for installation](https://docs.ampersand.ai/reference/objects-&-fields/upsert-custom-fields-for-installation.md): Create or update fields in the SaaS instance tied to an installation. Only HubSpot and Salesforce are supported currently.
+- [Upsert custom fields for connection](https://docs.ampersand.ai/reference/objects-&-fields/upsert-custom-fields-for-connection.md): Create or update fields in the SaaS instance tied to a connection. Only HubSpot and Salesforce are supported currently.
+- [List operations](https://docs.ampersand.ai/reference/operation/list-operations.md)
+- [Get backfill progress](https://docs.ampersand.ai/reference/operation/get-backfill-progress.md): Retrieve backfill progress (records processed, estimated total) for an object. Use to track progress of an initial data sync.
+- [Get an operation](https://docs.ampersand.ai/reference/operation/get-an-operation.md): Retrieve a single operation by ID. An operation represents an async read, write, or subscribe action for an installation. Use this endpoint to poll for status, inspect the result summary, or fetch metadata such as read progress or write outcome details.
+- [List logs for an operation](https://docs.ampersand.ai/reference/operation/list-logs-for-an-operation.md)
+- [List providers](https://docs.ampersand.ai/reference/provider/list-providers.md): Returns all supported SaaS providers and their capabilities. The response is a JSON object keyed by provider name (e.g. `salesforce`, `hubspot`). Each value describes the provider's authentication type, supported operations, modules, and configuration options. No authentication is required.
+- [Get provider](https://docs.ampersand.ai/reference/provider/get-provider.md): Returns information about a single provider. No authentication is required.
+- [List API keys](https://docs.ampersand.ai/reference/api-key/list-api-keys.md)
+- [Create a new API key](https://docs.ampersand.ai/reference/api-key/create-a-new-api-key.md)
+- [Get an API key](https://docs.ampersand.ai/reference/api-key/get-an-api-key.md)
+- [Delete an API key](https://docs.ampersand.ai/reference/api-key/delete-an-api-key.md)
+- [Update an API key](https://docs.ampersand.ai/reference/api-key/update-an-api-key.md)
+- [List destinations](https://docs.ampersand.ai/reference/destination/list-destinations.md)
+- [Create a new destination](https://docs.ampersand.ai/reference/destination/create-a-new-destination.md)
+- [Get a destination](https://docs.ampersand.ai/reference/destination/get-a-destination.md)
+- [Delete a destination](https://docs.ampersand.ai/reference/destination/delete-a-destination.md)
+- [Update a destination](https://docs.ampersand.ai/reference/destination/update-a-destination.md)
+- [List topics](https://docs.ampersand.ai/reference/destination/list-topics.md)
+- [Create a topic](https://docs.ampersand.ai/reference/destination/create-a-topic.md)
+- [Delete a topic](https://docs.ampersand.ai/reference/destination/delete-a-topic.md)
+- [Update a topic](https://docs.ampersand.ai/reference/destination/update-a-topic.md)
+- [List topic destination routes](https://docs.ampersand.ai/reference/destination/list-topic-destination-routes.md)
+- [Create a topic destination route](https://docs.ampersand.ai/reference/destination/create-a-topic-destination-route.md)
+- [Delete a topic destination route](https://docs.ampersand.ai/reference/destination/delete-a-topic-destination-route.md)
+- [Generate a signed URL to upload a zip file to.](https://docs.ampersand.ai/reference/upload-url/generate-a-signed-url-to-upload-a-zip-file-to.md)
+- [Create a new organization](https://docs.ampersand.ai/reference/org/create-a-new-organization.md)
+- [Get an organization](https://docs.ampersand.ai/reference/org/get-an-organization.md)
+- [Update an organization](https://docs.ampersand.ai/reference/org/update-an-organization.md)
+- [List builders for an organization](https://docs.ampersand.ai/reference/org/list-builders-for-an-organization.md)
+- [List invites for an organization](https://docs.ampersand.ai/reference/org/list-invites-for-an-organization.md)
+- [Invite a user to an organization](https://docs.ampersand.ai/reference/org/invite-a-user-to-an-organization.md)
+- [Get an invite](https://docs.ampersand.ai/reference/org/get-an-invite.md)
+- [Revoke an invite](https://docs.ampersand.ai/reference/org/revoke-an-invite.md)
+- [Add user to an organization](https://docs.ampersand.ai/reference/org/add-user-to-an-organization.md): Adds a builder to an organization. Two authorization modes - Org owner inviting another user, or self-joining via claimed domain (authenticated user's email domain should be claimed by this organization).
+- [Check if a domain is claimed](https://docs.ampersand.ai/reference/org/check-if-a-domain-is-claimed.md): Returns claimed domain information if authenticated user is an owner of the organization that claimed the domain, or if the user's email domain matches the claimed domain.
+- [Claim a domain](https://docs.ampersand.ai/reference/org/claim-a-domain.md): Claim a domain for an organization. Accepts email, domain, or URL.
+- [List organization's claimed domains](https://docs.ampersand.ai/reference/org/list-organizations-claimed-domains.md): Get all domains claimed by a specific organization
+- [Get information about the current user](https://docs.ampersand.ai/reference/user/get-information-about-the-current-user.md)
+- [Accept an invite](https://docs.ampersand.ai/reference/user/accept-an-invite.md)
+- [Get the billing account for an organization](https://docs.ampersand.ai/reference/billing-account/get-the-billing-account-for-an-organization.md)
+- [Create a portal session for a billing account](https://docs.ampersand.ai/reference/billing-account/create-a-portal-session-for-a-billing-account.md)
+- [List notification event-topic routes](https://docs.ampersand.ai/reference/notification/list-notification-event-topic-routes.md)
+- [Create a notification event-topic route](https://docs.ampersand.ai/reference/notification/create-a-notification-event-topic-route.md)
+- [Delete a notification event-topic route](https://docs.ampersand.ai/reference/notification/delete-a-notification-event-topic-route.md)
+- [List JWT keys](https://docs.ampersand.ai/reference/jwt-key/list-jwt-keys.md): Retrieves all JWT keys for the specified project, with optional filtering for active keys only
+- [Create a new JWT key](https://docs.ampersand.ai/reference/jwt-key/create-a-new-jwt-key.md): Creates a new JWT key for the specified project with RSA public key for token verification
+- [Get a specific JWT key](https://docs.ampersand.ai/reference/jwt-key/get-a-specific-jwt-key.md): Retrieves a specific JWT key by its ID within the specified project
+- [Delete a JWT key](https://docs.ampersand.ai/reference/jwt-key/delete-a-jwt-key.md): Permanently deletes a JWT key from the specified project
+- [Update a JWT key](https://docs.ampersand.ai/reference/jwt-key/update-a-jwt-key.md): Updates specific fields of a JWT key using field masks. Currently supports updating the 'active' status and 'name' field.
+- [Browse supported provider integrations](https://docs.ampersand.ai/provider-guides/overview.md): Browse provider guides for CRMs, ERPs, help desks, and warehouses, split into deep connectors that read, write, and subscribe and auth and proxy connectors.
+- [AccuLynx](https://docs.ampersand.ai/provider-guides/accuLynx.md): Connect AccuLynx to Ampersand with an API key to read, write, and subscribe to jobs, contacts, and custom fields, plus proxy calls to the AccuLynx API.
+- [Acuity Scheduling](https://docs.ampersand.ai/provider-guides/acuityScheduling.md): Register an Acuity Scheduling OAuth app for Ampersand, then read appointments, clients, and orders, write blocks and certificates, and make proxy calls.
+- [Aha!](https://docs.ampersand.ai/provider-guides/aha.md): Connect Aha! to Ampersand via an OAuth application to read epics, features, ideas, and goals, write select objects, and make proxy calls to the Aha! API.
+- [Aircall](https://docs.ampersand.ai/provider-guides/aircall.md): Register an Aircall OAuth2 app through the Aircall marketplace team, then use Ampersand to read and write calls, users, contacts, numbers, teams, and tags.
+- [Airtable](https://docs.ampersand.ai/provider-guides/airtable.md): Register an Airtable OAuth integration in the Builders Hub, add its client ID, secret, and scopes to Ampersand, and make proxy calls to the Airtable API.
+- [Amplemarket](https://docs.ampersand.ai/provider-guides/amplemarket.md): Make proxy calls to the Amplemarket API through Ampersand using API key auth, with a sample amp.yaml manifest and a link to create an Amplemarket API key.
+- [Amplitude](https://docs.ampersand.ai/provider-guides/amplitude.md): Use Basic Auth to connect Amplitude to Ampersand, read cohorts, events, annotations, and taxonomy objects, write attribution and releases, and proxy calls.
+- [Anthropic](https://docs.ampersand.ai/provider-guides/anthropic.md): Proxy requests to the Anthropic API at api.anthropic.com through Ampersand with customer-supplied API keys, including an example manifest and setup steps.
+- [Apollo](https://docs.ampersand.ai/provider-guides/apollo.md): Link Apollo to Ampersand via an API key to read and write contacts, accounts, and deals, read sequences and tasks, and set a master key for custom fields.
+- [Asana](https://docs.ampersand.ai/provider-guides/asana.md): Create an Asana app with the Ampersand redirect URL to read projects, tags, and users, write tasks, goals, and portfolios, and make proxy calls to Asana.
+- [Ashby](https://docs.ampersand.ai/provider-guides/ashby.md): Connect Ashby to Ampersand with Basic Auth to read and write applications, candidates, jobs, and offers, with incremental reads for select objects.
+- [Atlassian](https://docs.ampersand.ai/provider-guides/atlassian.md): Integrate Atlassian Jira with Ampersand to read and write Issues, with steps to create an OAuth 2.0 app, add scopes, and set the redirect URL.
+- [Attio](https://docs.ampersand.ai/provider-guides/attio.md): Connect Attio to Ampersand to read, write, and subscribe to People, Companies, Deals, Notes, and Tasks, and create an Attio OAuth app with scopes.
+- [Avoma](https://docs.ampersand.ai/provider-guides/avoma.md): Use API key auth to connect Avoma to Ampersand, reading meetings, calls, notes, and transcriptions, writing calls and templates, and proxy calls.
+- [AWeber](https://docs.ampersand.ai/provider-guides/aweber.md): Set up the AWeber connector for Proxy Actions by creating an AWeber app with an OAuth2 redirect URL and adding its Client ID and Secret to Ampersand.
+- [AWS](https://docs.ampersand.ai/provider-guides/aws.md): Read and write AWS IAM Identity Center objects like Users, Groups, Applications, and PermissionSets, using an Access Key ID and Secret for Basic Auth.
+- [Basecamp](https://docs.ampersand.ai/provider-guides/basecamp.md): Use the Basecamp connector for Proxy Actions only, registering an OAuth app in 37signals Launchpad and collecting the customer Basecamp account ID.
+- [Bentley](https://docs.ampersand.ai/provider-guides/bentley.md): Connect Bentley to Ampersand to read and write iTwins, library, and reality analysis objects, write savedviews, and register a Bentley web app for OAuth.
+- [BigQuery](https://docs.ampersand.ai/provider-guides/bigquery.md): Read any BigQuery table in a dataset with incremental reads using a service account key, plus field limits, timestamp column needs, and proxy calls.
+- [Bird (MessageBird)](https://docs.ampersand.ai/provider-guides/bird.md): Connect Bird (MessageBird) to Ampersand with API key auth and make proxy calls to api.bird.com using a manifest, the amp CLI, and InstallIntegration UI.
+- [Bitbucket](https://docs.ampersand.ai/provider-guides/bitbucket.md): Integrate Bitbucket with Ampersand to read repositories, projects, hooks, and members, write snippets and projects, and register an OAuth consumer.
+- [Blackbaud](https://docs.ampersand.ai/provider-guides/blackbaud.md): Connect Blackbaud to Ampersand via the SKY API to read and write events and registrants, write constituents and batches, and create a Blackbaud OAuth app.
+- [Blueshift](https://docs.ampersand.ai/provider-guides/blueshift.md): Use Ampersand with Blueshift via Basic Auth to read campaigns and segments, write customers and events, and manage email, push, and SMS templates.
+- [Blueshift (EU)](https://docs.ampersand.ai/provider-guides/blueshiftEU.md): Connect Blueshift (EU) to Ampersand using Basic Auth with a username and password, then make proxy calls to the EU base URL at api.eu.getblueshift.com.
+- [Box](https://docs.ampersand.ai/provider-guides/box.md): Connect Box to Ampersand for proxy calls to api.box.com, with steps to create a Box app using User Authentication (OAuth 2.0) and add the redirect URI.
+- [Braintree](https://docs.ampersand.ai/provider-guides/braintree.md): Link Braintree to Ampersand with Basic Auth to read customers, transactions, refunds, and disputes incrementally, and write customers and paymentMethods.
+- [Braze](https://docs.ampersand.ai/provider-guides/braze.md): Integrate Braze with Ampersand using an API key and Rest Instance ID to read campaigns, canvases, and segments, and write catalogs and scheduled messages.
+- [Breakcold](https://docs.ampersand.ai/provider-guides/breakcold.md): Connect Breakcold to Ampersand with an API key to read leads, workspaces, and members, write notes, tags, lists, and reminders, and make proxy calls.
+- [Breezy](https://docs.ampersand.ai/provider-guides/breezy.md): Connect Breezy to Ampersand with an API key to read positions, pipelines, and templates, write draft positions, and make proxy calls to the Breezy API.
+- [Brevo](https://docs.ampersand.ai/provider-guides/brevo.md): Use the Brevo connector with API key auth to read and write contacts, companies, CRM deals, notes, tasks, and email campaigns, plus proxy calls to Brevo.
+- [Bynder](https://docs.ampersand.ai/provider-guides/bynder.md): Set up Bynder proxy actions in Ampersand by creating an OAuth app in your Bynder portal and adding its Client ID, Client Secret, and scopes to Ampersand.
+- [Calendly](https://docs.ampersand.ai/provider-guides/calendly.md): Connect Calendly to Ampersand to read scheduled events and event types, write invitees, shares, and webhook subscriptions, and create a Calendly app.
+- [CallRail](https://docs.ampersand.ai/provider-guides/callRail.md): Integrate CallRail with Ampersand using an API v3 key to read and write calls, form submissions, text messages, trackers, and users, with proxy support.
+- [Campaign Monitor](https://docs.ampersand.ai/provider-guides/campaignMonitor.md): Connect Campaign Monitor to Ampersand to read and write clients and admins, make proxy calls, and register a Campaign Monitor OAuth app for credentials.
+- [Capsule](https://docs.ampersand.ai/provider-guides/capsule.md): Integrate Capsule CRM with Ampersand to read and write opportunities, parties, projects, and tasks with incremental reads, then create a Capsule CRM app.
+- [ChargeOver](https://docs.ampersand.ai/provider-guides/chargeOver.md): Make proxy calls to the ChargeOver API through Ampersand using Basic Auth, after enabling REST API support in ChargeOver to get your username and password.
+- [Chargebee](https://docs.ampersand.ai/provider-guides/chargebee.md): Connect Chargebee with Basic auth to read subscriptions, invoices, and customers, write quotes and orders, and run incremental reads on many objects.
+- [ChartMogul](https://docs.ampersand.ai/provider-guides/chartMogul.md)
+- [ChiliPiper](https://docs.ampersand.ai/provider-guides/chilipiper.md)
+- [Chorus](https://docs.ampersand.ai/provider-guides/chorus.md)
+- [Clari](https://docs.ampersand.ai/provider-guides/clari.md)
+- [Clari Copilot](https://docs.ampersand.ai/provider-guides/clariCopilot.md)
+- [ClickUp](https://docs.ampersand.ai/provider-guides/clickup.md)
+- [Close](https://docs.ampersand.ai/provider-guides/close.md)
+- [CloudTalk](https://docs.ampersand.ai/provider-guides/cloudtalk.md)
+- [Coda](https://docs.ampersand.ai/provider-guides/coda.md)
+- [ConnectWise](https://docs.ampersand.ai/provider-guides/connectWise.md)
+- [Constant Contact](https://docs.ampersand.ai/provider-guides/constantContact.md)
+- [Copper](https://docs.ampersand.ai/provider-guides/copper.md)
+- [Coupa](https://docs.ampersand.ai/provider-guides/coupa.md)
+- [Crunchbase](https://docs.ampersand.ai/provider-guides/crunchbase.md)
+- [Customer.io Journeys App](https://docs.ampersand.ai/provider-guides/customerJourneysApp.md)
+- [Customer.io Journeys Track](https://docs.ampersand.ai/provider-guides/customerJourneysTrack.md)
+- [Delighted](https://docs.ampersand.ai/provider-guides/delighted.md)
+- [DevRev](https://docs.ampersand.ai/provider-guides/devrev.md)
+- [Discord](https://docs.ampersand.ai/provider-guides/discord.md)
+- [Discourse](https://docs.ampersand.ai/provider-guides/discourse.md)
+- [Dixa](https://docs.ampersand.ai/provider-guides/dixa.md)
+- [Docusign](https://docs.ampersand.ai/provider-guides/docusign.md)
+- [Domo](https://docs.ampersand.ai/provider-guides/domo.md)
+- [Dovetail](https://docs.ampersand.ai/provider-guides/dovetail.md)
+- [Drift](https://docs.ampersand.ai/provider-guides/drift.md)
+- [Dropbox](https://docs.ampersand.ai/provider-guides/dropbox.md)
+- [Dropbox Sign](https://docs.ampersand.ai/provider-guides/dropboxsign.md)
+- [Dynamics 365 Business Central](https://docs.ampersand.ai/provider-guides/dynamicsBusinessCentral.md)
+- [Dynamics 365 CRM](https://docs.ampersand.ai/provider-guides/dynamicsCRM.md)
+- [EmailBison](https://docs.ampersand.ai/provider-guides/emailBison.md)
+- [Fathom](https://docs.ampersand.ai/provider-guides/fathom.md)
+- [Figma](https://docs.ampersand.ai/provider-guides/figma.md)
+- [Fireflies](https://docs.ampersand.ai/provider-guides/fireflies.md)
+- [Flatfile](https://docs.ampersand.ai/provider-guides/flatfile.md)
+- [Formstack](https://docs.ampersand.ai/provider-guides/formstack.md)
+- [Four/Four](https://docs.ampersand.ai/provider-guides/fourFour.md)
+- [Freshchat](https://docs.ampersand.ai/provider-guides/freshchat.md)
+- [Freshdesk](https://docs.ampersand.ai/provider-guides/freshdesk.md)
+- [Front](https://docs.ampersand.ai/provider-guides/front.md)
+- [G2](https://docs.ampersand.ai/provider-guides/g2.md)
+- [Geckoboard](https://docs.ampersand.ai/provider-guides/geckoboard.md)
+- [GetResponse](https://docs.ampersand.ai/provider-guides/getResponse.md)
+- [GitHub](https://docs.ampersand.ai/provider-guides/github.md)
+- [GitLab](https://docs.ampersand.ai/provider-guides/gitlab.md)
+- [GoTo](https://docs.ampersand.ai/provider-guides/goTo.md)
+- [Gong](https://docs.ampersand.ai/provider-guides/gong.md)
+- [Google](https://docs.ampersand.ai/provider-guides/google.md)
+- [Google (workspace delegation)](https://docs.ampersand.ai/provider-guides/google-workspace-delegation.md)
+- [Gorgias](https://docs.ampersand.ai/provider-guides/gorgias.md)
+- [Granola](https://docs.ampersand.ai/provider-guides/granola.md)
+- [Groove](https://docs.ampersand.ai/provider-guides/groove.md)
+- [Guru](https://docs.ampersand.ai/provider-guides/guru.md)
+- [Gusto](https://docs.ampersand.ai/provider-guides/gusto.md)
+- [HappyFox](https://docs.ampersand.ai/provider-guides/happyfox.md)
+- [Help Scout Mailbox](https://docs.ampersand.ai/provider-guides/helpScoutMailbox.md)
+- [HeyReach](https://docs.ampersand.ai/provider-guides/heyreach.md)
+- [HighLevel](https://docs.ampersand.ai/provider-guides/highlevel.md)
+- [Hightouch](https://docs.ampersand.ai/provider-guides/hightouch.md)
+- [Hive](https://docs.ampersand.ai/provider-guides/hive.md)
+- [Housecall Pro](https://docs.ampersand.ai/provider-guides/housecallPro.md)
+- [HubSpot](https://docs.ampersand.ai/provider-guides/hubspot.md)
+- [Hunter](https://docs.ampersand.ai/provider-guides/hunter.md)
+- [Insightly](https://docs.ampersand.ai/provider-guides/insightly.md)
+- [Instantly](https://docs.ampersand.ai/provider-guides/instantly.md)
+- [Intercom](https://docs.ampersand.ai/provider-guides/intercom.md)
+- [Ironclad](https://docs.ampersand.ai/provider-guides/ironclad.md)
+- [Iterable](https://docs.ampersand.ai/provider-guides/iterable.md)
+- [Jira](https://docs.ampersand.ai/provider-guides/jira.md)
+- [Jobber](https://docs.ampersand.ai/provider-guides/jobber.md)
+- [Join.me](https://docs.ampersand.ai/provider-guides/joinMe.md)
+- [Jotform](https://docs.ampersand.ai/provider-guides/jotform.md)
+- [Jump](https://docs.ampersand.ai/provider-guides/jump.md)
+- [JustCall](https://docs.ampersand.ai/provider-guides/justCall.md)
+- [Kaseya VSAX](https://docs.ampersand.ai/provider-guides/kaseyaVSAX.md)
+- [Keap](https://docs.ampersand.ai/provider-guides/keap.md)
+- [Kit](https://docs.ampersand.ai/provider-guides/kit.md)
+- [Klaviyo](https://docs.ampersand.ai/provider-guides/klaviyo.md)
+- [Lemlist](https://docs.ampersand.ai/provider-guides/lemlist.md)
+- [Lever](https://docs.ampersand.ai/provider-guides/lever.md)
+- [Lightfield](https://docs.ampersand.ai/provider-guides/lightfield.md)
+- [Linear](https://docs.ampersand.ai/provider-guides/linear.md)
+- [LinkedIn](https://docs.ampersand.ai/provider-guides/linkedin.md)
+- [Livestorm](https://docs.ampersand.ai/provider-guides/livestorm.md)
+- [Lob](https://docs.ampersand.ai/provider-guides/lob.md)
+- [Loxo](https://docs.ampersand.ai/provider-guides/loxo.md)
+- [Mailgun](https://docs.ampersand.ai/provider-guides/mailgun.md)
+- [Marketo](https://docs.ampersand.ai/provider-guides/marketo.md)
+- [Meta](https://docs.ampersand.ai/provider-guides/meta.md)
+- [Microsoft](https://docs.ampersand.ai/provider-guides/microsoft.md)
+- [Microsoft (Admin consent)](https://docs.ampersand.ai/provider-guides/microsoftAdminConsent.md)
+- [Miro](https://docs.ampersand.ai/provider-guides/miro.md)
+- [Mixmax](https://docs.ampersand.ai/provider-guides/mixmax.md)
+- [Mixpanel](https://docs.ampersand.ai/provider-guides/mixpanel.md)
+- [Monaco](https://docs.ampersand.ai/provider-guides/monaco.md)
+- [Monday](https://docs.ampersand.ai/provider-guides/monday.md)
+- [Mural](https://docs.ampersand.ai/provider-guides/mural.md)
+- [NetSuite](https://docs.ampersand.ai/provider-guides/netsuite.md)
+- [NetSuite (M2M)](https://docs.ampersand.ai/provider-guides/netsuite-m2m.md)
+- [Notion](https://docs.ampersand.ai/provider-guides/notion.md)
+- [Nutshell](https://docs.ampersand.ai/provider-guides/nutshell.md)
+- [Odoo](https://docs.ampersand.ai/provider-guides/odoo.md)
+- [Okta](https://docs.ampersand.ai/provider-guides/okta.md)
+- [OpenAI](https://docs.ampersand.ai/provider-guides/openAI.md)
+- [Outplay](https://docs.ampersand.ai/provider-guides/outplay.md)
+- [Outreach](https://docs.ampersand.ai/provider-guides/outreach.md)
+- [Paddle](https://docs.ampersand.ai/provider-guides/paddle.md)
+- [Paddle Sandbox](https://docs.ampersand.ai/provider-guides/paddleSandbox.md)
+- [PhoneBurner](https://docs.ampersand.ai/provider-guides/phoneBurner.md)
+- [Pinterest](https://docs.ampersand.ai/provider-guides/pinterest.md)
+- [Pipedrive](https://docs.ampersand.ai/provider-guides/pipedrive.md)
+- [Pipeliner](https://docs.ampersand.ai/provider-guides/pipeliner.md)
+- [Podium](https://docs.ampersand.ai/provider-guides/podium.md)
+- [Productboard](https://docs.ampersand.ai/provider-guides/productBoard.md)
+- [Procore](https://docs.ampersand.ai/provider-guides/procore.md)
+- [Pylon](https://docs.ampersand.ai/provider-guides/pylon.md)
+- [QuickBooks](https://docs.ampersand.ai/provider-guides/quickbooks.md)
+- [Ramp](https://docs.ampersand.ai/provider-guides/ramp.md)
+- [Rebilly](https://docs.ampersand.ai/provider-guides/rebilly.md)
+- [Recurly](https://docs.ampersand.ai/provider-guides/recurly.md)
+- [Reply](https://docs.ampersand.ai/provider-guides/reply.md)
+- [RevenueCat](https://docs.ampersand.ai/provider-guides/revenuecat.md)
+- [RingCentral](https://docs.ampersand.ai/provider-guides/ringCentral.md)
+- [Sage Intacct](https://docs.ampersand.ai/provider-guides/sageIntacct.md)
+- [Salesfinity](https://docs.ampersand.ai/provider-guides/salesfinity.md)
+- [Salesflare](https://docs.ampersand.ai/provider-guides/salesflare.md)
+- [Salesforce](https://docs.ampersand.ai/provider-guides/salesforce.md)
+- [Salesforce (JWT authentication)](https://docs.ampersand.ai/provider-guides/salesforce-jwt.md)
+- [Salesloft](https://docs.ampersand.ai/provider-guides/salesloft.md)
+- [Segment](https://docs.ampersand.ai/provider-guides/segment.md)
+- [Seismic](https://docs.ampersand.ai/provider-guides/seismic.md)
+- [Sellsy](https://docs.ampersand.ai/provider-guides/sellsy.md)
+- [SendGrid](https://docs.ampersand.ai/provider-guides/sendGrid.md)
+- [ServiceNow](https://docs.ampersand.ai/provider-guides/serviceNow.md)
+- [Shopify](https://docs.ampersand.ai/provider-guides/shopify.md)
+- [Slack](https://docs.ampersand.ai/provider-guides/slack.md)
+- [Smartlead](https://docs.ampersand.ai/provider-guides/smartlead.md)
+- [Smartsheet](https://docs.ampersand.ai/provider-guides/smartsheet.md)
+- [Snapchat Ads](https://docs.ampersand.ai/provider-guides/snapchatAds.md)
+- [Snowflake](https://docs.ampersand.ai/provider-guides/snowflake.md)
+- [SolarWinds Service Desk](https://docs.ampersand.ai/provider-guides/solarwindsServiceDesk.md)
+- [Square](https://docs.ampersand.ai/provider-guides/square.md)
+- [Stripe](https://docs.ampersand.ai/provider-guides/stripe.md)
+- [SuperSend](https://docs.ampersand.ai/provider-guides/superSend.md)
+- [SurveyMonkey](https://docs.ampersand.ai/provider-guides/surveyMonkey.md)
+- [Talkdesk](https://docs.ampersand.ai/provider-guides/talkdesk.md)
+- [Teamleader](https://docs.ampersand.ai/provider-guides/teamleader.md)
+- [Teamwork](https://docs.ampersand.ai/provider-guides/teamwork.md)
+- [Timely](https://docs.ampersand.ai/provider-guides/timely.md)
+- [Tipalti](https://docs.ampersand.ai/provider-guides/tipalti.md)
+- [Vtiger](https://docs.ampersand.ai/provider-guides/vtiger.md)
+- [Wealthbox](https://docs.ampersand.ai/provider-guides/wealthbox.md)
+- [Webex](https://docs.ampersand.ai/provider-guides/webex.md)
+- [Webflow](https://docs.ampersand.ai/provider-guides/webflow.md)
+- [Whereby](https://docs.ampersand.ai/provider-guides/whereby.md)
+- [WordPress](https://docs.ampersand.ai/provider-guides/wordpress.md)
+- [Wrike](https://docs.ampersand.ai/provider-guides/wrike.md)
+- [Workday](https://docs.ampersand.ai/provider-guides/workday.md)
+- [Xero](https://docs.ampersand.ai/provider-guides/xero.md)
+- [Zendesk Support](https://docs.ampersand.ai/provider-guides/zendeskSupport.md)
+- [Zoho](https://docs.ampersand.ai/provider-guides/zoho.md)
+- [Zoom](https://docs.ampersand.ai/provider-guides/zoom.md)
+- [ZoomInfo](https://docs.ampersand.ai/provider-guides/zoominfo.md)
+- [Ampersand customer guides for integration setup](https://docs.ampersand.ai/customer-guides/overview.md): Learn what the Ampersand customer guides offer end users setting up integrations: step-by-step instructions, troubleshooting tips, and prerequisites.
+- [BigQuery](https://docs.ampersand.ai/customer-guides/bigquery.md): Connect a BigQuery dataset to an integration: enable APIs, create a GCP service account and JSON key, gather connection details, and fix access issues.
+- [Google (workspace delegation)](https://docs.ampersand.ai/customer-guides/google-workspace-delegation.md): Connect your Google Workspace domain with a GCP service account using domain-wide delegation for Gmail, Calendar, and Contacts, and fix common auth errors.
+- [Housecall Pro](https://docs.ampersand.ai/customer-guides/housecallPro.md): Generate a Housecall Pro API key as an Admin on a MAX subscription, and optionally set up webhooks with your developer's URL for real-time updates.
+- [HubSpot](https://docs.ampersand.ai/customer-guides/hubspot.md): Check HubSpot requirements before installing an integration: you must be a Super Admin, and you need a Sales Hub seat if the integration accesses Leads.
+- [Loxo](https://docs.ampersand.ai/customer-guides/loxo.md): Find the metadata values you need before installing a Loxo integration: your full domain from the browser URL and your Agency Slug from workspace settings.
+- [Marketo](https://docs.ampersand.ai/customer-guides/marketo.md): Prepare Marketo for an integration by creating an API-only role, an API-only user, and a LaunchPoint custom service, then find your Munchkin Account ID.
+- [NetSuite](https://docs.ampersand.ai/customer-guides/netsuite.md): Connect NetSuite with OAuth 2.0 Client Credentials: install the bundle, create an integration record, generate a certificate, and map it to a role.
+- [Salesforce](https://docs.ampersand.ai/customer-guides/salesforce.md): Set up your Salesforce org for an integration using an External Client App or Connected App, with the user permissions and OAuth policies it requires.
+- [Salesforce (JWT authentication)](https://docs.ampersand.ai/customer-guides/salesforce-jwt.md): Connect Salesforce using the OAuth 2.0 JWT Bearer Flow: generate an RSA key pair, create an External Client App, set OAuth policies, and fix auth errors.
+- [Snowflake](https://docs.ampersand.ai/customer-guides/snowflake.md): The Snowflake provider is currently in private preview and not yet generally available. Learn how to request access by emailing support@withampersand.com.
+- [Update a connection](https://docs.ampersand.ai/customer-guides/update-connection.md): Update the credentials for an integration from the Manage tab, including when to re-authenticate, such as a bad_credentials status or switching accounts.
+- [Zoho](https://docs.ampersand.ai/customer-guides/zoho.md): Prepare your Zoho account by activating Zoho CRM with an organization user, and create Zoho Mail outgoing webhooks for Subscribe Actions.
+- [Overview](https://docs.ampersand.ai/troubleshooting-guides/overview.md): Search the troubleshooting index by error message or provider, then follow the linked symptom, cause, and fix steps for errors you see in Ampersand.
+- [General](https://docs.ampersand.ai/troubleshooting-guides/general.md): Fix errors that can happen with any provider, including paused read schedules, proxy calls returning 429 Too Many Requests, and rejected webhook payloads.
+- [Google](https://docs.ampersand.ai/troubleshooting-guides/google.md): Diagnose and resolve common errors when running Google integrations, including Gmail.
+- [Microsoft Dynamics](https://docs.ampersand.ai/troubleshooting-guides/microsoft-dynamics.md): Diagnose and resolve common errors when running Microsoft Dynamics 365 CRM and Business Central integrations.
+- [Salesforce](https://docs.ampersand.ai/troubleshooting-guides/salesforce.md): Diagnose and resolve common errors when running Salesforce integrations.
+- [Ampersand AI SDK](https://docs.ampersand.ai/ai-sdk.md): Install the Ampersand AI SDK and use tools like createRecord and updateRecord in agents built with the Vercel AI SDK or Mastra to act on SaaS platforms.
+- [Gong](https://docs.ampersand.ai/customer-guides/gong.md): Create a Gong automation rule that sends call.created webhooks to your developer's webhook URL, and learn when to expect each webhook after a call ends.
+- [MCP Server](https://docs.ampersand.ai/mcp-server.md): Connect your AI agent or MCP client to the multi-tenant Ampersand MCP server using your project ID, integration name, group ref, and API key.
+- [Drip](https://docs.ampersand.ai/provider-guides/drip.md)
+- [Quickstart](https://docs.ampersand.ai/quickstart.md): Build your first integration end to end: define a manifest, deploy it, and embed the install UI.
+- [Terminal example](https://docs.ampersand.ai/terminal-example.md)
+
+## OpenAPI Specs
+
+- [platform](/platform.json)
+- [read](/read.json)
+- [platform](/reference/platform.json)
+- [read](/reference/read.json)
+- [write](/reference/write.json)
+- [search](/search.json)
+- [write](/write.json)
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

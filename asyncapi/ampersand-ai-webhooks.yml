@@ -1,0 +1,59 @@
+generated: '2026-10-24'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://docs.ampersand.ai/destinations/webhooks.md
+sources:
+- https://docs.ampersand.ai/destinations/webhooks.md
+- https://docs.ampersand.ai/destinations/overview.md
+- https://docs.ampersand.ai/notifications/overview.md
+- https://docs.ampersand.ai/notifications/notification-payloads.md
+description: Ampersand webhook destinations receive read and subscribe action results as well as notification events.
+events:
+- event: installation.created
+  description: Fires when a customer installs your integration to their SaaS instance.
+- event: installation.updated
+  description: Fires when a customer modifies their integration configuration (e.g., changes field mappings).
+- event: installation.deleted
+  description: Fires when a customer uninstalls your integration from their SaaS instance.
+- event: read.backfill.done
+  description: Fires when historical data sync completes so you know backfill data is ready to process.
+- event: read.backfill.error
+  description: Fires when a historical data sync (backfill) fails.
+- event: read.schedule.paused
+  description: Fires when a scheduled data sync is paused, often due to authentication issues or other errors.
+- event: read.triggered.done
+  description: Fires when an on-demand triggered read completes successfully.
+- event: read.triggered.error
+  description: Fires when an on-demand triggered read fails.
+- event: write.async.done
+  description: Fires when an asynchronous write operation completes, indicating success or failure and which records were written or had errors.
+- event: subscribe.create.success
+  description: Fires when a subscription becomes active.
+- event: subscribe.update.success
+  description: Fires when an update to an existing subscribe action completes successfully.
+- event: subscribe.delete.success
+  description: Fires when a subscribe action is removed successfully, including tearing down the subscription on the provider's side.
+- event: subscribe.create.error
+  description: Fires when Ampersand fails to set up a subscribe action for an installation.
+- event: subscribe.update.error
+  description: Fires when Ampersand fails to update an existing subscribe action for an installation.
+- event: subscribe.delete.error
+  description: Fires when a subscribe action is removed but Ampersand could not tear down the subscription on the provider's side.
+- event: connection.created
+  description: Fires when a new OAuth connection is established with a SaaS provider.
+- event: connection.refreshed
+  description: Fires when Ampersand automatically refreshes a connection's OAuth access token as it nears expiry.
+- event: connection.updated
+  description: Fires when an existing connection is updated.
+- event: connection.deleted
+  description: Fires when a connection is deleted.
+- event: connection.error
+  description: Fires when there's an error with an OAuth connection.
+- event: destination.webhook.disabled
+  description: Fires when a webhook destination endpoint is disabled, which can happen automatically after repeated failed delivery attempts.
+- event: destination.delivery.error
+  description: Fires when Ampersand could not deliver read or subscribe results to a destination after all retry attempts were exhausted.
+delivery:
+  signature: Svix signatures are included in a header for verification.
+  content_type: application/json
+docs: https://docs.ampersand.ai/destinations/webhooks.md

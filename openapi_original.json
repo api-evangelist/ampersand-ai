@@ -1,0 +1,450 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Ampersand website: machine-readable resources",
+    "version": "1.0.0",
+    "summary": "Public, unauthenticated resources served by the Ampersand marketing site.",
+    "description": "What the Ampersand marketing site serves to agents and crawlers: every page as HTML or Markdown (by `Accept` header or a `.md` URL), llms.txt indexes, the sitemap, and the changelog feed.\n\nThese resources require no authentication. Unknown paths under `/api/` return an RFC 9457 problem document. The browser form at `/engineers-guide-to-crms` submits to the separate, same-origin-only `/api/book-orders` endpoint.\n\n**Ampersand's product API is documented separately.** It uses an API key in the `X-Api-Key` header or a Bearer JWT, and its OpenAPI specifications are:\n- Platform API (https://api.withampersand.com/v1): https://docs.ampersand.ai/platform.json\n- Read API (https://read.withampersand.com/v1): https://docs.ampersand.ai/read.json\n- Write API (https://write.withampersand.com/v1): https://docs.ampersand.ai/write.json\n- Search API (https://search.withampersand.com/v1): https://docs.ampersand.ai/search.json",
+    "contact": {
+      "name": "Ampersand",
+      "url": "https://www.ampersand.ai"
+    }
+  },
+  "externalDocs": {
+    "description": "Ampersand documentation",
+    "url": "https://docs.ampersand.ai"
+  },
+  "servers": [
+    {
+      "url": "https://www.ampersand.ai"
+    }
+  ],
+  "security": [],
+  "tags": [
+    {
+      "name": "Pages",
+      "description": "Marketing, blog, changelog and comparison pages."
+    },
+    {
+      "name": "Indexes",
+      "description": "Machine-readable indexes of the site."
+    },
+    {
+      "name": "Errors",
+      "description": "Structured errors for machine clients."
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Pages"
+        ],
+        "operationId": "getHomePage",
+        "summary": "Homepage, as HTML or Markdown",
+        "description": "Returns the homepage. Send `Accept: text/markdown` for Markdown; any other Accept, including a browser's, returns HTML.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Accept"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The page. HTML by default; Markdown when the Accept header prefers text/markdown. Responses carry `Vary: Accept`.",
+            "headers": {
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "const": "Accept"
+                }
+              }
+            },
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/HtmlDocument"
+                }
+              },
+              "text/markdown": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarkdownDocument"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{page}": {
+      "get": {
+        "tags": [
+          "Pages"
+        ],
+        "operationId": "getPage",
+        "summary": "Any page, as HTML or Markdown",
+        "description": "Nested pages (`/blog/{slug}`, `/compare/{vendor}`, `/changelog/{slug}`) behave the same way. See /sitemap-index.xml for every page.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "pricing"
+          },
+          {
+            "$ref": "#/components/parameters/Accept"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The page. HTML by default; Markdown when the Accept header prefers text/markdown. Responses carry `Vary: Accept`.",
+            "headers": {
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "const": "Accept"
+                }
+              }
+            },
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/HtmlDocument"
+                }
+              },
+              "text/markdown": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarkdownDocument"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such page. The body follows the Accept header: the HTML error page, a Markdown explanation with links to /llms.txt and the sitemap, or an RFC 9457 problem document.",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/HtmlDocument"
+                }
+              },
+              "text/markdown": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarkdownDocument"
+                }
+              },
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/index.md": {
+      "get": {
+        "tags": [
+          "Pages"
+        ],
+        "operationId": "getHomePageMarkdown",
+        "summary": "Homepage as Markdown",
+        "description": "The homepage's Markdown twin, the same body `/` returns for `Accept: text/markdown`.",
+        "responses": {
+          "200": {
+            "description": "The homepage as Markdown.",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarkdownDocument"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{page}.md": {
+      "get": {
+        "tags": [
+          "Pages"
+        ],
+        "operationId": "getPageMarkdown",
+        "summary": "Any page as Markdown",
+        "description": "The Markdown twin of `/{page}`, generated from the page at build time.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "pricing"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The page as Markdown.",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarkdownDocument"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such page.",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/HtmlDocument"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/llms.txt": {
+      "get": {
+        "tags": [
+          "Indexes"
+        ],
+        "operationId": "getLlmsTxt",
+        "summary": "llms.txt index for AI agents",
+        "description": "A compact guide to Ampersand for language models: what the product is, core capabilities, and links to docs, specs and key pages.",
+        "responses": {
+          "200": {
+            "description": "llms.txt (Markdown).",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LlmsTxt"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/llms-full.txt": {
+      "get": {
+        "tags": [
+          "Indexes"
+        ],
+        "operationId": "getLlmsFullTxt",
+        "summary": "Full text of the marketing pages",
+        "description": "The full text of the marketing pages in one Markdown document, for agents that want the whole site in a single fetch.",
+        "responses": {
+          "200": {
+            "description": "llms-full.txt (Markdown).",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LlmsFullTxt"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sitemap-index.xml": {
+      "get": {
+        "tags": [
+          "Indexes"
+        ],
+        "operationId": "getSitemapIndex",
+        "summary": "XML sitemap index",
+        "description": "Lists the site's XML sitemaps, which in turn list every public page URL.",
+        "responses": {
+          "200": {
+            "description": "Sitemap index.",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/SitemapIndex"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/changelog/rss.xml": {
+      "get": {
+        "tags": [
+          "Indexes"
+        ],
+        "operationId": "getChangelogFeed",
+        "summary": "Changelog RSS feed",
+        "description": "Product changelog entries, newest first.",
+        "responses": {
+          "200": {
+            "description": "RSS 2.0 feed.",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/RssFeed"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{path}": {
+      "get": {
+        "tags": [
+          "Errors"
+        ],
+        "operationId": "apiNotFound",
+        "summary": "No API is served here",
+        "description": "Every method on every path under `/api/` returns 404 with a problem document pointing to Ampersand's product API.",
+        "parameters": [
+          {
+            "name": "path",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not an endpoint.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "Accept": {
+        "name": "Accept",
+        "in": "header",
+        "required": false,
+        "description": "`text/markdown` selects Markdown; anything else, including a browser's default, selects HTML.",
+        "schema": {
+          "type": "string"
+        },
+        "examples": {
+          "markdown": {
+            "value": "text/markdown"
+          },
+          "html": {
+            "value": "text/html"
+          }
+        }
+      }
+    },
+    "schemas": {
+      "HtmlDocument": {
+        "type": "string",
+        "contentMediaType": "text/html",
+        "description": "A complete HTML document: the page as a browser renders it."
+      },
+      "MarkdownDocument": {
+        "type": "string",
+        "contentMediaType": "text/markdown",
+        "description": "The page as Markdown, generated from its rendered HTML at build time: an H1, the page's meta description as a blockquote, a `Source:` line with the canonical URL, then the page content with absolute links.",
+        "examples": [
+          "# Pricing\n\n> Usage-based pricing...\n\nSource: https://www.ampersand.ai/pricing\n\n..."
+        ]
+      },
+      "LlmsTxt": {
+        "type": "string",
+        "contentMediaType": "text/markdown",
+        "description": "An llms.txt file (https://llmstxt.org): Markdown with an H1, a summary blockquote, and H2 sections of annotated links. Served as text/plain."
+      },
+      "LlmsFullTxt": {
+        "type": "string",
+        "contentMediaType": "text/markdown",
+        "description": "The full text of the site's marketing pages as one Markdown document. Served as text/plain."
+      },
+      "SitemapIndex": {
+        "type": "string",
+        "contentMediaType": "application/xml",
+        "description": "A sitemap index (https://www.sitemaps.org/protocol.html): a <sitemapindex> of <sitemap><loc> entries, each an XML sitemap of page URLs.",
+        "externalDocs": {
+          "url": "https://www.sitemaps.org/protocol.html"
+        }
+      },
+      "RssFeed": {
+        "type": "string",
+        "contentMediaType": "application/xml",
+        "description": "An RSS 2.0 feed of changelog entries: a <channel> of <item>s with title, link, description and pubDate.",
+        "externalDocs": {
+          "url": "https://www.rssboard.org/rss-specification"
+        }
+      },
+      "Problem": {
+        "type": "object",
+        "description": "RFC 9457 problem details, with extension members `code`, `resolution` and `links`.",
+        "required": [
+          "type",
+          "title",
+          "status",
+          "detail"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "format": "uri-reference",
+            "examples": [
+              "about:blank"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "examples": [
+              "Not Found"
+            ]
+          },
+          "status": {
+            "type": "integer",
+            "examples": [
+              404
+            ]
+          },
+          "detail": {
+            "type": "string"
+          },
+          "instance": {
+            "type": "string",
+            "format": "uri-reference"
+          },
+          "code": {
+            "type": "string",
+            "examples": [
+              "not_found"
+            ]
+          },
+          "resolution": {
+            "type": "string",
+            "description": "What to do next."
+          },
+          "links": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      }
+    }
+  }
+}

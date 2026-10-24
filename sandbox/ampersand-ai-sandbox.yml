@@ -1,0 +1,14 @@
+generated: '2026-10-24'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://docs.ampersand.ai/provider-guides/paddleSandbox.md
+sources:
+- https://docs.ampersand.ai/provider-guides/paddleSandbox.md
+description: Paddle Sandbox
+modes:
+- name: sandbox
+  base_url: https://sandbox-api.paddle.com
+  how_to_get_access: API Key auth – users generate an API key via Paddle's developer portal (https://developer.paddle.com/api-reference/about/authentication).
+    No Provider App setup is required.
+docs:
+- https://docs.ampersand.ai/provider-guides/paddleSandbox.md

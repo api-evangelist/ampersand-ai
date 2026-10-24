@@ -1,0 +1,41 @@
+generated: '2026-10-24'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://docs.ampersand.ai/cli/overview.md
+sources:
+- https://docs.ampersand.ai/cli/overview.md
+- https://docs.ampersand.ai/cli/reference.md
+- https://docs.ampersand.ai/cli/overview#deploy-integrations
+- https://docs.ampersand.ai/ai-sdk.md
+install:
+- method: Homebrew (macOS)
+  command: 'brew tap amp-labs/cli
+
+    brew update
+
+    brew install amp-labs/cli/cli'
+- method: Homebrew upgrade (macOS)
+  command: brew upgrade amp-labs/cli/cli
+commands:
+- group: Authentication
+  commands:
+  - login
+  - logout
+- group: Utility
+  commands:
+  - help
+  - version
+- group: Managing integrations
+  commands:
+  - deploy
+  - delete:integration
+  - delete:installation
+- group: Resource
+  commands:
+  - list:destinations
+  - list:installations
+  - list:integrations
+  - list:projects
+binary: amp
+docs: https://docs.ampersand.ai/cli/overview.md
+note: 2 extracted row(s) were dropped because their quote was not on the page.
